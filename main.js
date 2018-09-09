@@ -1,4 +1,4 @@
-function mergeSort(arrA,arrB) {
+function merge(arrA,arrB) {
 	let singleSorted = [];
 	while (arrA.length && arrB.length) {
 		if (arrA[0] < arrB[0]) {
@@ -12,6 +12,15 @@ function mergeSort(arrA,arrB) {
 	return singleSorted.concat(arrA,arrB);
 }
 
-let arrA = [0,1,3,4,4,5,7,10,13,14,16,17,18,19,21,24,25,27,28,30];
-let arrB = [1,2,3,5,7,8,10,11,12,13,15,18,22,22,23,25,28,28,29,29];
-console.log(mergeSort(arrA,arrB));
+function mergeSort(arr) {
+	if (arr.length < 2) {
+		return arr;
+	}
+	let midPoint = Math.floor(arr.length / 2);
+	let left = mergeSort(arr.slice(0,midPoint));
+	let right = mergeSort(arr.slice(midPoint));
+	return merge(left,right);
+}
+
+
+console.log(mergeSort([1,6,5,3,10,9,3,4,5,6,2,1,7,5,9,10]));
