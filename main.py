@@ -11,8 +11,12 @@ def merge(arrA,arrB):
 
 
 def mergeSort(arr):
-	if (arr.length <= 1):
+	if (len(arr) <= 1):
 		return arr
-	pointer = math.floor(len(arr) / 2)
+	pointer = int(len(arr) / 2)
+	left = mergeSort(arr[0:pointer])
+	right = mergeSort(arr[pointer:len(arr)])
+	joined = merge(left,right)
+	return joined
 
-print(mergeSort([1,6,5,3,10,9,3,4,5,6,2,1,7,5,9,10]));
+print(mergeSort([52,26,93,17,77,31,44,55,20]));
